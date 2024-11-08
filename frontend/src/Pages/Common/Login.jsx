@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { BASE_URL } from "../../constants/baseUrl";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -32,11 +33,11 @@ const Login = () => {
       // Send login request
       const response =
         role == "student"
-          ? await axios.post("http://localhost:4000/student/login", {
+          ? await axios.post(`${BASE_URL}/student/login`, {
               student_id: rollNo,
               password: password,
             })
-          : await axios.post("http://localhost:4000/teacher/login", {
+          : await axios.post(`${BASE_URL}/teacher/login`, {
               teacher_Id: rollNo,
               password,
             });

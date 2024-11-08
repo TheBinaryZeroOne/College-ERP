@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCourses } from "../../features/CourseSlice";
+import { BASE_URL } from "../../constants/baseUrl";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
@@ -41,7 +42,7 @@ const DeleteTeacherFromCourse = () => {
       }
       try {
         let res = await axios.get(
-          `http://localhost:4000/courses/${selectedCourse}/subjects`
+          `${BASE_URL}/courses/${selectedCourse}/subjects`
         );
 
         if (res.data.success) {
@@ -68,7 +69,7 @@ const DeleteTeacherFromCourse = () => {
       }
       try {
         let res = await axios.get(
-          `http://localhost:4000/courses/${selectedCourse}/subjects/${selectedSubject}/teachers`
+          `${BASE_URL}/courses/${selectedCourse}/subjects/${selectedSubject}/teachers`
         );
 
         if (res.data.success) {

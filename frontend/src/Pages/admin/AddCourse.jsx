@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { BASE_URL } from "../../constants/baseUrl";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
@@ -62,7 +63,7 @@ const AddCourse = () => {
       //    The ...formData spreads all properties of formData into the new object, but since we provide
       // subjects after ...formData, it overwrites the original subjects with the new, filtered array.
       const response = await axios.post(
-        "http://localhost:4000/courses/addCourse",
+        `${BASE_URL}/courses/addCourse`,
         { ...formData, subjects }, // Send only non-empty subjects
         { headers }
       );

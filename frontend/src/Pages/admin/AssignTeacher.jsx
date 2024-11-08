@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCourses } from "../../features/CourseSlice";
+import { BASE_URL } from "../../constants/baseUrl"
 import axios from "axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
@@ -39,7 +40,7 @@ const AssignTeacher = () => {
       }
       try {
         let res = await axios.get(
-          `http://localhost:4000/courses/${selectedCourse}/subjects`
+          `${BASE_URL}/courses/${selectedCourse}/subjects`
         );
 
         if (res.data.success) {
@@ -80,7 +81,7 @@ const AssignTeacher = () => {
 
     try {
       let response = await axios.post(
-        "http://localhost:4000/courses/assignTeacher",
+        `${BASE_URL}/courses/assignTeacher`,
         formData,
         { headers }
       );

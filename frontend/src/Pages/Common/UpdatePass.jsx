@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import StudentNav from "../Student/StudentNav";
 import { toast } from "react-toastify";
+import { BASE_URL } from "../../constants/baseUrl"
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Cookies from "js-cookie";
@@ -36,7 +37,7 @@ const UpdatePass = () => {
       let res =
         role === "teacher"
           ? await axios.put(
-              `http://localhost:4000/teacher/updatePassword/${id}`,
+              `${BASE_URL}/teacher/updatePassword/${id}`,
               data,
               {
                 headers: {
@@ -46,7 +47,7 @@ const UpdatePass = () => {
               }
             )
           : await axios.put(
-              `http://localhost:4000/student/updatePass/${id}`,
+              `${BASE_URL}/student/updatePass/${id}`,
               data,
               {
                 headers: {

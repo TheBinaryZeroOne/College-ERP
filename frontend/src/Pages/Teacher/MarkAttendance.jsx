@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import TeacherNav from "./TeacherNav";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { BASE_URL } from "../../constants/baseUrl";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import Modal from "../Common/Modal";
@@ -20,9 +21,7 @@ const MarkAttendance = () => {
 
   let fetchStudents = async () => {
     try {
-      let res = await axios.get(
-        `http://localhost:4000/courses/${courseId}/students`
-      );
+      let res = await axios.get(`${BASE_URL}/courses/${courseId}/students`);
 
       let sortedStudents = res.data.students.sort(
         (a, b) => a.student_id - b.student_id
@@ -54,7 +53,7 @@ const MarkAttendance = () => {
 
     try {
       let response = await axios.post(
-        `http://localhost:4000/courses/course/attendance`,
+        `${BASE_URL}/courses/course/attendance`,
         {
           courseId: courseId,
           subjectId: subId,

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import TeacherNav from "../../Teacher/TeacherNav";
 import StudentNav from "../../Student/StudentNav";
+import { BASE_URL } from "../../../constants/baseUrl"
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -36,11 +37,11 @@ const VerifyOtp = () => {
       let res =
         role === "teacher"
           ? await axios.post(
-              `http://localhost:4000/teacher/forgetPassword/verifyotp`,
+              `${BASE_URL}/teacher/forgetPassword/verifyotp`,
               { opt: Number(otp), password }
             )
           : await axios.post(
-              `http://localhost:4000/student/forgetPassword/verifyotp`,
+              `${BASE_URL}/student/forgetPassword/verifyotp`,
               { otp: Number(otp), password }
             );
 

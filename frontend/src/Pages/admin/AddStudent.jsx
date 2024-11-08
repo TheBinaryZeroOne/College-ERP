@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { BASE_URL } from "../../constants/baseUrl";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCourses } from "../../features/CourseSlice";
 import axios from "axios";
@@ -57,7 +58,7 @@ const AddStudent = () => {
 
     try {
       let response = await axios.post(
-        "http://localhost:4000/student/register",
+        `${BASE_URL}/student/register`,
         formData,
         { headers }
       );

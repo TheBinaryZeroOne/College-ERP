@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCourses } from "../../features/CourseSlice";
+import { BASE_URL } from "../../constants/baseUrl";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
@@ -44,7 +45,7 @@ const DeleteCourse = () => {
 
     try {
       let response = await axios.delete(
-        `http://localhost:4000/courses/${formData.courseId}/deleteCourse`,
+        `${BASE_URL}/courses/${formData.courseId}/deleteCourse`,
         {
           headers,
         }

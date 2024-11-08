@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { BASE_URL } from "../../constants/baseUrl"
 import axios from "axios";
 import { BiSolidUserCircle } from "react-icons/bi";
 import { FaCamera } from "react-icons/fa";
@@ -23,7 +24,7 @@ const UpdateStudentDetails = () => {
     const fetchStudentDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/student/${id}/details`
+          `${BASE_URL}/student/${id}/details`
         );
         const data = response.data || {};
         const address = data.address ? JSON.parse(data.address) : {};
@@ -61,7 +62,7 @@ const UpdateStudentDetails = () => {
     try {
       // Update student information
       const infoResponse = await axios.put(
-        `http://localhost:4000/student/${id}/updateInfo`,
+        `${BASE_URL}/student/${id}/updateInfo`,
         updatedInfo
       );
 
@@ -73,7 +74,7 @@ const UpdateStudentDetails = () => {
         formData.append("image", selectedImage);
 
         const photoResponse = await axios.put(
-          `http://localhost:4000/student/${id}/updatePhoto`,
+          `${BASE_URL}/student/${id}/updatePhoto`,
           formData,
           {
             headers: {

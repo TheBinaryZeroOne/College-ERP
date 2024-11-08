@@ -1,3 +1,4 @@
+import { BASE_URL } from "../../constants/baseUrl"
 import axios from "axios";
 import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
@@ -39,7 +40,7 @@ const DeleteTeacher = () => {
 
     try {
       let response = await axios.delete(
-        `http://localhost:4000/teacher/deleteTeacher`,
+        `${BASE_URL}/teacher/deleteTeacher`,
         {
           data: formData,
           headers,

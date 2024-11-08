@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { BASE_URL } from "../../constants/baseUrl"
 import axios from "axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
@@ -42,7 +43,7 @@ const AddTeacher = () => {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:4000/teacher/addTeacher", formData, {
+      await axios.post(`${BASE_URL}/teacher/addTeacher`, formData, {
         headers,
       });
 

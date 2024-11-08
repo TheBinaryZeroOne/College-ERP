@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import TeacherNav from "../../Teacher/TeacherNav";
 import StudentNav from "../../Student/StudentNav";
+import { BASE_URL } from "../../../constants/baseUrl"
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
@@ -38,10 +39,10 @@ const ForgetPass = () => {
     try {
       let res =
         role === "teacher"
-          ? await axios.post("http://localhost:4000/teacher/forgetPassword", {
+          ? await axios.post(`${BASE_URL}/teacher/forgetPassword`, {
               email,
             })
-          : await axios.post("http://localhost:4000/student/forgetPassword", {
+          : await axios.post(`${BASE_URL}/student/forgetPassword`, {
               email,
             });
 

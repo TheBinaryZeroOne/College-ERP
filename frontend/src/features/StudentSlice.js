@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+import { BASE_URL } from "../constants/baseUrl";
+
 let init = {
   attendance: {
     data: null,
@@ -17,9 +19,7 @@ let init = {
 export const fetchAttendance = createAsyncThunk(
   "Student/fetchAttendance",
   async (studentId) => {
-    let res = axios.get(
-      `http://localhost:4000/student/getAttendance/${studentId}`
-    );
+    let res = axios.get(`${BASE_URL}/student/getAttendance/${studentId}`);
 
     return res;
   }
@@ -29,7 +29,7 @@ export const fetchStudentDetails = createAsyncThunk(
   "Student/fetchStudentDetails",
   async (studentId) => {
     let res = await axios.get(
-      `http://localhost:4000/student/${studentId}/details`
+      `${BASE_URL}/student/${studentId}/details`
     );
 
     return res.data;

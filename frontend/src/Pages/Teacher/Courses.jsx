@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TeacherNav from "./TeacherNav";
+import { BASE_URL } from "../../constants/baseUrl"
 import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
@@ -12,7 +13,7 @@ const Courses = () => {
 
   const getCourses = async () => {
     try {
-      let response = await axios.get("http://localhost:4000/courses");
+      let response = await axios.get(`${BASE_URL}/courses`);
       setCourses(response.data.data);
     } catch (err) {
       console.log("Something went wrong", err);

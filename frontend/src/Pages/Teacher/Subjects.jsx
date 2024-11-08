@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TeacherNav from "./TeacherNav";
 import { useParams, Link } from "react-router-dom";
+import { BASE_URL } from '../../constants/baseUrl'
 import axios from "axios";
 
 const Subjects = () => {
@@ -11,7 +12,7 @@ const Subjects = () => {
   const fetchSubjects = async () => {
     try {
       let res = await axios.get(
-        `http://localhost:4000/courses/${courseId}/subjects`
+        `${BASE_URL}/courses/${courseId}/subjects`
       );
       setSubjects(res.data.subjects);
     } catch (err) {

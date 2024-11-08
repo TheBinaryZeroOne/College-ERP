@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCourses } from "../../features/CourseSlice";
+import { BASE_URL } from "../../constants/baseUrl"
 import axios from "axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
@@ -37,7 +38,7 @@ const RemoveStudentFormCourse = () => {
 
     try {
       const res = await axios.get(
-        `http://localhost:4000/courses/${courseId}/students`,
+        `${BASE_URL}/courses/${courseId}/students`,
         {
           headers,
         }
@@ -78,7 +79,7 @@ const RemoveStudentFormCourse = () => {
 
     try {
       let response = await axios.delete(
-        "http://localhost:4000/courses/removeStudentFromCourse",
+        `${BASE_URL}/courses/removeStudentFromCourse`,
         {
           headers,
           data: formData,
