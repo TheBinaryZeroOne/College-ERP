@@ -7,6 +7,9 @@ const db = require("./database/db");
 // variables
 const PORT = process.env.PORT || 4000;
 
+// Connecting database
+db();
+
 const app = express();
 
 // middlewares
